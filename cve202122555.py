@@ -104,7 +104,7 @@ class ExploitCVE(object):
             print(execute)
             
             # let the exploit work and finish to open the session
-            time.sleep(300)
+            time.sleep(420)
             
             shell = client.sessions.session(list(client.sessions.list.keys())[0])
             return shell
