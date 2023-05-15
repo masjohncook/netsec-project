@@ -111,7 +111,7 @@ class ExploitCVE(object):
         except Exception as e:
             print(e)
     
-    def checkShellSession(slef):
+    def checkShellSession(self):
         """
         funtion to check wether the shell session was opened successfully
         """        
