@@ -6,7 +6,7 @@
 
 
 This program has a function to automate the attack on CVE-2021-22555. There are several steps in the attack.
-1. Ping to check connection to the tartget
+1. Ping to check connection to the target
 2. Check the target is live or not
 3. Perform full open scan to the target
 4. Exploiting the target through SSH
@@ -168,7 +168,7 @@ class ExploitCVE(object):
         shell.write('1234')
 
 
-def main():
+if __name__ == "__main__":
     current_filename = os.path.basename(__file__)
     
     # parsing the argv for arguments handling and print help
@@ -254,5 +254,3 @@ def main():
     except Exception as e:
         print(e)
         pass
-
-main()
